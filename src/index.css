@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 
 @media print {
   @page {
-    size: A4;
+    size: A4 landscape;
     margin: 1cm;
   }
 
