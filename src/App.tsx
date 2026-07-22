@@ -13,7 +13,8 @@ import {
   Mail,
   ChevronRight,
   Menu,
-  X
+  X,
+  Download
 } from 'lucide-react';
 
 // --- Data ---
@@ -166,12 +167,12 @@ export default function App() {
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="p-10 h-full flex flex-col">
-          <div className="mb-16">
+          <div className="mb-12 shrink-0">
             <img src="https://onlejobs.com/static/public/logo.png" alt="onlejobs logo" className="h-10 w-auto object-contain" />
             <p className="text-xs text-gray-2 mt-4 uppercase tracking-widest font-bold">Brand Manual</p>
           </div>
           
-          <ul className="space-y-6 flex-grow">
+          <ul className="space-y-6 flex-1 overflow-y-auto mb-8 pr-2">
             {sections.map((section) => (
               <li key={section.id}>
                 <button
@@ -182,25 +183,14 @@ export default function App() {
                       : 'text-gray-2 hover:text-brand-primary font-medium'
                   }`}
                 >
-                  {activeSection === section.id && <ChevronRight size={16} className="text-brand-primary" />}
+                  {activeSection === section.id && <ChevronRight size={16} className="text-brand-primary shrink-0" />}
                   <span className={activeSection === section.id ? '' : 'pl-7'}>{section.title}</span>
                 </button>
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 mb-6">
-            <button 
-              onClick={() => window.print()} 
-              className="w-full bg-brand-primary text-white px-4 py-3 rounded-xl font-bold hover:bg-brand-primary/90 transition-colors shadow-sm flex items-center justify-center gap-2 text-sm"
-            >
-              <FileText size={16} />
-              Download as PDF
-            </button>
-            <p className="text-[10px] text-gray-3 mt-2 text-center">Use 'Save as PDF' & enable background graphics</p>
-          </div>
-
-          <div className="text-xs text-gray-2 mt-auto font-medium">
+          <div className="text-xs text-gray-2 mt-auto font-medium shrink-0">
             © 2026 onlejobs.com<br/>
             Visual Identity Guidelines
           </div>
@@ -293,8 +283,14 @@ export default function App() {
             {/* Primary Logo */}
             <div>
               <FadeIn>
-                <div className="bg-white border border-gray-5 p-16 md:p-32 rounded-3xl flex items-center justify-center shadow-sm mb-6">
-                  <img src="https://onlejobs.com/static/public/logo.png" alt="onlejobs Primary Logo" className="h-16 md:h-24 w-auto object-contain" />
+                <div className="group relative bg-white border border-gray-5 p-16 md:p-32 rounded-3xl flex items-center justify-center shadow-sm mb-6 overflow-hidden">
+                  <img src="https://onlejobs.com/static/public/logo.png" alt="onlejobs Primary Logo" className="h-16 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+                  <a href="https://onlejobs.com/static/public/logo.png" download="onlejobs_logo.png" target="_blank" rel="noopener noreferrer" className="absolute inset-0 bg-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                    <div className="bg-white text-brand-primary font-bold py-3 px-6 rounded-full shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                      <Download size={20} />
+                      Download Logo
+                    </div>
+                  </a>
                 </div>
                 <p className="text-gray-2 text-center max-w-2xl mx-auto mb-12">
                   Our primary logo. It should be used on light backgrounds with ample clear space to ensure maximum legibility and impact.
@@ -303,14 +299,26 @@ export default function App() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <FadeIn delay={0.1}>
-                  <div className="bg-brand-secondary p-16 rounded-3xl flex items-center justify-center h-64 mb-4">
-                    <img src="/White_logo.png" alt="onlejobs White Logo on Secondary" className="h-10 md:h-12 w-auto object-contain" />
+                  <div className="group relative bg-brand-secondary p-16 rounded-3xl flex items-center justify-center h-64 mb-4 overflow-hidden">
+                    <img src="/White_logo.png" alt="onlejobs White Logo on Secondary" className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+                    <a href="/White_logo.png" download="onlejobs_logo_white.png" target="_blank" rel="noopener noreferrer" className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                      <div className="bg-white text-brand-secondary font-bold py-2 px-5 rounded-full shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                        <Download size={18} />
+                        Download Logo
+                      </div>
+                    </a>
                   </div>
                   <p className="text-sm text-gray-2 text-center">Reversed out on secondary brand color.</p>
                 </FadeIn>
                 <FadeIn delay={0.2}>
-                  <div className="bg-brand-primary p-16 rounded-3xl flex items-center justify-center h-64 mb-4">
-                    <img src="/White_logo.png" alt="onlejobs White Logo on Primary" className="h-10 md:h-12 w-auto object-contain" />
+                  <div className="group relative bg-brand-primary p-16 rounded-3xl flex items-center justify-center h-64 mb-4 overflow-hidden">
+                    <img src="/White_logo.png" alt="onlejobs White Logo on Primary" className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+                    <a href="/White_logo.png" download="onlejobs_logo_white.png" target="_blank" rel="noopener noreferrer" className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                      <div className="bg-white text-brand-primary font-bold py-2 px-5 rounded-full shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                        <Download size={18} />
+                        Download Logo
+                      </div>
+                    </a>
                   </div>
                   <p className="text-sm text-gray-2 text-center">Reversed out on primary brand color.</p>
                 </FadeIn>
@@ -327,35 +335,47 @@ export default function App() {
                 
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   <div className="flex flex-col items-center">
-                    <div className="w-full aspect-square bg-white border border-gray-5 rounded-3xl flex items-center justify-center p-16 shadow-sm mb-4">
+                    <div className="group relative w-full aspect-square bg-white border border-gray-5 rounded-3xl flex items-center justify-center p-16 shadow-sm mb-4 overflow-hidden">
                       {/* Using the favicon as a placeholder if the uploaded files are missing, but linking to the uploaded names as the preferred source */}
                       <img 
                         src="/Logo Type1.png" 
                         onError={(e) => {
                           e.currentTarget.onerror = null;
                           e.currentTarget.src = 'https://onlejobs.com/static/public/favicon.ico';
-                          e.currentTarget.className = 'w-32 h-32 md:w-48 md:h-48 object-contain';
+                          e.currentTarget.className = 'w-32 h-32 md:w-48 md:h-48 object-contain transition-transform duration-300 group-hover:scale-105';
                         }}
                         alt="Logo Type 1" 
-                        className="w-full h-full object-contain" 
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" 
                       />
+                      <a href="/Logo Type1.png" download="onlejobs_icon_primary.png" target="_blank" rel="noopener noreferrer" className="absolute inset-0 bg-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <div className="bg-white text-brand-primary font-bold py-2 px-4 rounded-full shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-sm">
+                          <Download size={16} />
+                          Download
+                        </div>
+                      </a>
                     </div>
                     <p className="font-bold text-brand-secondary">Primary Icon</p>
                     <p className="text-sm text-gray-2 text-center mt-1">For use on light backgrounds.</p>
                   </div>
                   
                   <div className="flex flex-col items-center">
-                    <div className="w-full aspect-square bg-brand-primary border border-brand-primary rounded-3xl flex items-center justify-center p-16 shadow-sm mb-4">
+                    <div className="group relative w-full aspect-square bg-brand-primary border border-brand-primary rounded-3xl flex items-center justify-center p-16 shadow-sm mb-4 overflow-hidden">
                       <img 
                         src="/Logo Type2.png" 
                         onError={(e) => {
                           e.currentTarget.onerror = null;
                           e.currentTarget.src = 'https://onlejobs.com/static/public/favicon.ico';
-                          e.currentTarget.className = 'w-32 h-32 md:w-48 md:h-48 object-contain brightness-0 invert';
+                          e.currentTarget.className = 'w-32 h-32 md:w-48 md:h-48 object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105';
                         }}
                         alt="Logo Type 2" 
-                        className="w-full h-full object-contain" 
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" 
                       />
+                      <a href="/Logo Type2.png" download="onlejobs_icon_reversed.png" target="_blank" rel="noopener noreferrer" className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <div className="bg-white text-brand-primary font-bold py-2 px-4 rounded-full shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-sm">
+                          <Download size={16} />
+                          Download
+                        </div>
+                      </a>
                     </div>
                     <p className="font-bold text-brand-secondary">Reversed Icon</p>
                     <p className="text-sm text-gray-2 text-center mt-1">For use on primary brand color or dark backgrounds.</p>
