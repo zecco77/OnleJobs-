@@ -52,6 +52,21 @@ h1, h2, h3, h4, h5, h6, .font-serif {
     background-color: white !important;
   }
 
+  nav {
+    display: none !important;
+  }
+  
+  button[aria-label="Toggle mobile menu"] {
+    display: none !important;
+  }
+
+  main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+
   section {
     page-break-after: always;
     break-after: page;
