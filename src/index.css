@@ -39,8 +39,8 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 
 @media print {
   @page {
-    size: A4 landscape;
-    margin: 1cm;
+    size: 297mm 210mm; /* A4 landscape */
+    margin: 10mm;
   }
 
   * {
@@ -50,6 +50,7 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 
   body {
     background-color: white !important;
+    width: 100% !important;
   }
 
   nav {
@@ -61,17 +62,38 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   }
 
   main {
-    margin-left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
   }
 
-
   section {
     page-break-after: always;
     break-after: page;
-    min-height: auto !important;
+    page-break-inside: avoid;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 190mm !important;
     height: auto !important;
+    padding: 0 !important;
+  }
+
+  /* Force desktop layout grid columns for print mode to prevent stacking */
+  .grid {
+    display: grid !important;
+  }
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .md\:grid-cols-\[1fr_2fr\] {
+    grid-template-columns: 1fr 2fr !important;
+  }
+  .md\:flex-row {
+    flex-direction: row !important;
   }
 
   /* Ensure framer motion elements are visible in print */
