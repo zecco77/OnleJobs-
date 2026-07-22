@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Merriweather", serif;
+
+  --color-brand-primary: #0056B3;
+  --color-brand-secondary: #353636;
+  
+  --color-state-info: #2F80ED;
+  --color-state-success: #27AE60;
+  --color-state-warning: #E2B93B;
+  --color-state-error: #EB5757;
+
+  --color-black-1: #000000;
+  --color-black-2: #1D1D1D;
+  --color-black-3: #282828;
+
+  --color-gray-1: #333333;
+  --color-gray-2: #4F4F4F;
+  --color-gray-3: #828282;
+  --color-gray-4: #BDBDBD;
+  --color-gray-5: #E0E0E0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #353636;
+  background-color: #F8F9FA;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: "Merriweather", serif;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background-color: white !important;
+  }
+
+  section {
+    page-break-after: always;
+    break-after: page;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* Ensure framer motion elements are visible in print */
+  [style*="opacity: 0"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
